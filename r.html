@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang=en-us>
+<head>
+<meta charset=utf-8>
+<title>Redirecting...</title>
+<script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-58128561-1', 'auto');ga('send', 'pageview');
+
+// Taken from http://stackoverflow.com/questions/979975/how-to-get-the-value-from-the-url-parameter 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+
+function insertMetaRedirect(url) {
+    var content = '"3; url="' + url + '"';
+    var meta = window.document.createElement('meta');
+    meta.setAttribute('http-equiv', 'refresh');
+    meta.setAttribute('content', content);
+    window.document.getElementsByTagName('head')[0].appendChild(meta);
+}
+var urlParams = getUrlVars();
+var url = 'http://grimberg.us';
+var destLink = urlParams['l'];
+if(destLink){
+    url = window.decodeURIComponent(destLink);
+}
+
+insertMetaRedirect(url);
+window.location.replace(url);
+</script>
+</head>
+<body><h1>Redirecting...</h1></body></html>
